@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
 
-int new_arithmetic(int a, int b) {
+long long new_arithmetic(long long a, long long b) {
     return (a + b) * (a - b);
 }
 
 int main() {
-    int a, b;
-    cin >> a >> b;
-    cout << new_arithmetic(a, b) << "\n";
+    long long a, b;
+    scanf("%lld %lld", &a, &b);
+    printf("%lld", new_arithmetic(a, b));
     return 0;
 }
