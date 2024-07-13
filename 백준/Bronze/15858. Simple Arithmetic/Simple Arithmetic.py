@@ -1,5 +1,5 @@
-import sys
+from decimal import Decimal
 
-a, b, c = map(int, sys.stdin.readline().split())
+a, b, c = map(Decimal, input().split())
 
-sys.stdout.write(str(a * b / c))
+print(a * b / c)
