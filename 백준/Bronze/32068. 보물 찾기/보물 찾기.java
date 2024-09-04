@@ -14,21 +14,13 @@ public class Main {
             int r = Integer.parseInt(line[1]);
             int s = Integer.parseInt(line[2]);
 
-            int step = 0;
-            int curr = s;
+            l -= s;
+            r -= s;
+            s = 0;
 
-            while (true) {
-                step++;
-                if (step % 2 == 1)
-                    curr -= (step - 1);
-                else
-                    curr += (step - 1);
+            long ans = 2 * Math.min(r, -l) + (r > -l ? 1 : 0);
 
-                if (curr == l || curr == r) {
-                    pw.println(step);
-                    break;
-                }
-            }
+            pw.println(ans);
         }
 
         pw.flush();
