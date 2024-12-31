@@ -4,35 +4,24 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Scanner sc = new Scanner(System.in);
 
-        int n = Integer.parseInt(br.readLine());
-        int m = Integer.parseInt(br.readLine());
-        String S = br.readLine();
+        int n = sc.nextInt();
+        int m = sc.nextInt();
 
-        int patternLen = 2 * n + 1;
-        int cnt = 0;
+        char[] arr = sc.next().toCharArray();
+        int[] memo = new int[m];
+        int ans = 0;
 
-        int i = 0;
-        while (i <= m - patternLen) {
-            if (S.charAt(i) == 'I') {
-                int j;
-                for (j = 1; j < patternLen; j++) {
-                    if (j % 2 == 1) {
-                        if (S.charAt(i + j) != 'O')
-                            break;
-                    } else {
-                        if (S.charAt(i + j) != 'I')
-                            break;
-                    }
-                }
-                if (j == patternLen) {
-                    cnt++;
-                    i += 2;
-                    continue;
-                }
+        for (int i = 1; i < m - 1; i++) {
+            if (arr[i] == 'O' && arr[i + 1] == 'I') {
+                memo[i + 1] = memo[i - 1] + 1;
+
+                if (memo[i + 1] >= n && arr[i - 2 * n + 1] == 'I')
+                    ans++;
             }
-            i++;
         }
-        System.out.println(cnt);
+
+        System.out.println(ans);
     }
 }
